@@ -1,6 +1,7 @@
 package br.com.dwd.sapatariaandroid;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -21,7 +22,10 @@ public class LoginActivity extends Activity {
                 final EditText senha = (EditText)findViewById(R.id.senha);
                 String loginString = login.getText().toString();
                 String senhaString = senha.getText().toString();
-                new WebServiceTask(LoginActivity.this, loginString, senhaString).execute();
+                //new WebServiceTask(LoginActivity.this, loginString, senhaString).execute();
+
+                Intent intent = new Intent();
+                intent.setClass(LoginActivity.this, ProdutosActivity.class);
             }
         });
     }
