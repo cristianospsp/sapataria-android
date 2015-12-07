@@ -26,6 +26,8 @@ public class LoginActivity extends Activity {
 
                 Intent intent = new Intent();
                 intent.setClass(LoginActivity.this, ProdutosActivity.class);
+
+                startActivity(intent);
             }
         });
     }
