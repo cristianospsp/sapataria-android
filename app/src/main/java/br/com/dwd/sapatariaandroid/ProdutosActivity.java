@@ -1,13 +1,20 @@
 package br.com.dwd.sapatariaandroid;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class ProdutosActivity extends Activity {
+
+    private ArrayList<Pedido> pedidos = new ArrayList<>();
 
     //private ListView viewListaProdutos;
 
@@ -15,6 +22,10 @@ public class ProdutosActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_produtos);
+        ListView listaPedido = (ListView) findViewById(R.id.lista_produtos);
+
+        final ArrayAdapter<Pedido> pedido = new ArrayAdapter<>(this, R.layout.layout_pedido, pedidos);
+        listaPedido.setAdapter(pedido);
 
         View btAddNoPedido = findViewById(R.id.add_produto_ao_pedido);
 
@@ -23,8 +34,12 @@ public class ProdutosActivity extends Activity {
             public void onClick(View v) {
 
                 View viewById = findViewById(R.id.lista_produtos);
+                Intent intent = new Intent();
+                intent.setClass(ProdutosActivity.this, PedidoActivity.class);
 
-                new WebServiceProdutosTask(ProdutosActivity.this, viewById).execute();
+                startActivity(intent);
+
+                //new WebServiceProdutosTask(ProdutosActivity.this, viewById).execute();
 
             }
         });
@@ -43,13 +58,18 @@ public class ProdutosActivity extends Activity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()){
+            case R.id.finalizaPedido:
+                finalizaPedido();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
+    }
 
-        return super.onOptionsItemSelected(item);
+    private void finalizaPedido() {
+        String mensagem = "Código do Pedido: 54789\n\nPedido realizado com sucesso.";
+        Toast toast = Toast.makeText(getApplicationContext(),mensagem,Toast.LENGTH_LONG);
+        toast.show();
     }
 }
