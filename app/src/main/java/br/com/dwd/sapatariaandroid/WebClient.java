@@ -24,8 +24,8 @@ public class WebClient {
     //private static final String URL = "http://192.168.43.63:8080/sapataria/rest/produto";
     private static String URL = "";
 
-    public WebClient() {
-        URL = "http://192.168.43.63:8080/sapataria/rest/produto/all";
+    public WebClient(String url) {
+        URL = "http://192.168.43.63:8080/sapataria/rest" + url;
     }
 
     public WebClient(String login, String senha) {
