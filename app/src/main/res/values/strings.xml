@@ -6,5 +6,5 @@
     <string name="codigo_produto">Código do produto</string>
     <string name="buscar">Buscar</string>
     <string name="finalizarPedido">Finalizar pedido</string>
-    <string name="pedido">Pedido</string>
+    <string name="pedido">Adicionar produto</string>
 </resources>
