@@ -39,7 +39,7 @@ public class ProdutosActivity extends Activity {
 
                 startActivity(intent);
 
-                //new WebServiceProdutosTask(ProdutosActivity.this, viewById).execute();
+                //new WebServiceProdutoTask(ProdutosActivity.this, viewById).execute();
 
             }
         });

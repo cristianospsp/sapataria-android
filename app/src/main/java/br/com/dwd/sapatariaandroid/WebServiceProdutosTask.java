@@ -40,7 +40,7 @@ public class WebServiceProdutosTask extends AsyncTask<Object, Object, String> {
 
     @Override
     protected String doInBackground(Object... params) {
-        WebClient client = new WebClient();
+        WebClient client = new WebClient("produto/all");
         return client.get();
     }
 

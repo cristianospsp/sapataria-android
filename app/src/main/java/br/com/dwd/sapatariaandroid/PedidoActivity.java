@@ -2,6 +2,7 @@ package br.com.dwd.sapatariaandroid;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
@@ -27,7 +28,11 @@ public class PedidoActivity extends Activity {
         btnBuscarProduto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                insereProduto();
+                //insereProduto();
+                EditText viewById = (EditText) findViewById(R.id.etxCodProduto);
+                String s = viewById.getText().toString();
+                new WebServiceProdutoTask(PedidoActivity.this, "1").execute();
+
             }
         });
     }
